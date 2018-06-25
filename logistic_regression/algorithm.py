@@ -3,30 +3,36 @@
 from .core import *
 
 
-class Algorithm:
+class newton(LogisticRegression):
+    def __init__(self, x, y, lamb=1, tol=1e-8, iter_lim=100, fit_intercept=True):
+        LogisticRegression.__init__(self, x, y, lamb, tol, iter_lim, fit_intercept)
+        _, n = self.x.shape
+        w_new = np.zeros((n, 1))
+        ntime = 0
+        while ntime < self.iter_lim:
+            # updata parameter
+            w_old = w_new
 
-    def __init__(self):
-        pass
-
-    def newton(self, x, y, tol=TOL, iter_lim=LIM, fit_intercept=True):
-        if fit_intercept:
-            _
-
-        p = x.shape[1]
-        w = np.zeros((p, 1))
-        times = 0
-
-        while times < iter_lim:
-            w_old = w
-            a = sigmoid(x.dot(w_old)) * (1 - sigmoid(x.dot(w_old)))
+            # calculate diagonal matrix, that a is the A_ii
+            a = sigmoid_prime(self.x.dot(w_old))
             A = np.diagflat(a)
-            H = x.T.dot(A).dot(x)
-            z = x.dot(w_old) + (1 - sigmoid(y * x.dot(w_old))) * y / a
-            XAz = x.T.dot(A).dot(z)
-            w = np.linalg.inv(H).dot(XAz)
-            if all(abs(w - w_old) < tol):
-                break
-            else:
-                times += 1
 
-        return w, H
+            # Hessian matrix
+            H = hessian(self.x, A, self.lamb)
+
+            # a part of gradient objective and combine previous iterated parameter
+            z = self.x.dot(w_old) + (1 - sigmoid(self.y * self.x.dot(w_old))) * self.y / a
+            XAz = self.x.T.dot(A).dot(z)
+
+            # calculate current parameter
+            w_new = np.linalg.inv(H).dot(XAz)
+
+            # calculate tolerance and iteration time to break loop
+            if np.sqrt((w_new - w_old).T.dot(w_new - w_old)) < tol:  # all(abs(w - w_old) < tol):
+                break
+
+            else:
+                ntime += 1
+
+        # get parameter
+        self.weight = w_new

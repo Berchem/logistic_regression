@@ -9,16 +9,17 @@
 """
 
 
-from .core import *
-from .algorithm import Algorithm
+# from .core import *
+from .algorithm import newton
 
 
+class fit(newton):
+    def __init__(self, method="newton", *args):
+        if method.lower() == "newton":
+            newton.__init__(self, *args)
+        # elif method.lower() == "coord":
+        #     coord.__init__(self, *args)
 
-class fit(Algorithm):
-    def __init__(self, *args):
-        Algorithm.__init__(self, *args)
-        # Videos.__init__(self, keywords=keywords, *args)
-        # Photos.__init__(self, keywords=keywords, *args)
 
 
 
