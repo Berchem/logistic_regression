@@ -30,7 +30,7 @@ def log_likelihood(x, y, w):
 def log_likelihood_partial_ij(x_i, y_i, w, j):
     """here i is the index of the data point,
     j the index of the derivative"""
-    return (y_i - sigmoid(x_i.dot(w))) * x_i[j]
+    return (1 - sigmoid(y_i * x_i.dot(w))) * y_i * x_i[j]
 
 
 def log_gradient_i(x_i, y_i, w):
@@ -40,7 +40,7 @@ def log_gradient_i(x_i, y_i, w):
 
 
 def log_gradient(x, y, w):
-    return reduce(lambda a, b: a + b, [log_gradient_i(x_i, y_i, w) for x_i, y_i in zip(x, y)])
+    return np.sum([log_gradient_i(x_i, y_i, w) for x_i, y_i in zip(x, y)])
 
 
 class LogisticRegression:
