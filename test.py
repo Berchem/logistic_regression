@@ -3,21 +3,6 @@ import logistic_regression
 from logistic_regression.algorithm import newton
 
 
-def yyy(x, y, lamb, lim, fit_intercept, tol):
-    os.system("java -jar log.jar binary.csv weight.txt %s %d %s %s" % (  # set argument
-        str(lamb), lim, str(fit_intercept).lower(), str(tol)))
-    with open("weight.txt") as f:
-        s = f.read()
-
-    return s
-
-# lim = 10
-# w = []
-# for i in xrange(lim):
-#     a, b = yyy(x, y)
-#     w += [{"a": a, "b": b}]
-
-
 # import data
 DF = pd.read_csv("binary.csv")
 
