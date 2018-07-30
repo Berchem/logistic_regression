@@ -16,7 +16,9 @@ import logistic_regression
 lr = logistic_regression.fit(x, y[, ...])
 ```
 
-class *fit*(*x*, *y*, ***karg*)
+## Description
+
+**class *fit*(*x*, *y*,** *****karg*)** 
 
 > parameters
 >> *x: {array-like, sparse matrix}, shape (n_samples, n_features)*
@@ -42,7 +44,7 @@ class *fit*(*x*, *y*, ***karg*)
 ## Class Diagram
 
 
-logistic_regression
+**logistic_regression**
 <br>&nbsp; &nbsp; |__ init 
 <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |__ fit(algorithm.newton)
 <br>&nbsp; &nbsp; |__ algorithm
