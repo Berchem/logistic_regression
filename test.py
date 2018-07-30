@@ -52,5 +52,3 @@ w_java = [float(i) for i in s.strip().split("\t")]
 print "with java  :" + "  ".join("%.4f" % wj for wj in w_java)
 print "with python:" + "  ".join("%.4f" % wp for wp in logist_fit.weight)
 print type(logist_fit.weight)
-
-print help(logistic_regression.fit)
