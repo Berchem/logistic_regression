@@ -57,6 +57,8 @@ lr = logistic_regression.fit(x, y[, ...])
 <br>&nbsp; &nbsp; |__ core
 <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |__ LogisticRegression
 
+## Algorithm
+see also <a href="algorithm_doc.ipynb">algorithm document</a>
 
 ## Requirements
 * Python 2.7

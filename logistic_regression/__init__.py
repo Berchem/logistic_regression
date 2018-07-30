@@ -16,7 +16,7 @@ from .algorithm import newton, coord
 class fit(newton, coord):
     method = "newton"
 
-    def __init__(self, *args, **kargs):
+    def __init__(self, x, y, *args, **kargs):
         if "method" in kargs:
             method = kargs["method"]
 
@@ -24,7 +24,7 @@ class fit(newton, coord):
             method = self.method
 
         if method.lower() == "newton":
-            newton.__init__(self, *args, **kargs)
+            newton.__init__(self, x, y, *args, **kargs)
 
         elif method.lower() == "coord":
             coord.__init__(self, *args)
