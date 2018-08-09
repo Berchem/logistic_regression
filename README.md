@@ -50,13 +50,14 @@ lr = logistic_regression.fit(x, y[, ...])
 
 
 **logistic_regression**
-<br>&nbsp; &nbsp; |__ init 
-<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |__ fit(algorithm.newton)
-<br>&nbsp; &nbsp; |__ algorithm
-<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |__ newton(core.LogisticRegression)
-<br>&nbsp; &nbsp; |__ core
-<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |__ LogisticRegression
-
+```
+    ├── init 
+    │     └── fit(algorithm.newton)
+    ├── algorithm
+    │     └── newton(core.LogisticRegression)
+    └── core
+          └── LogisticRegression
+```
 ## Algorithm
 see also <a href="algorithm_doc.ipynb">algorithm document</a>
 
